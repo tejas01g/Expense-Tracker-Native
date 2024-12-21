@@ -9,8 +9,9 @@ import {
   Dimensions,
 } from 'react-native';
 import { PieChart } from 'react-native-chart-kit';
+import { Ionicons } from '@expo/vector-icons';
 
-const App = () => {
+const HomeScreen = ({navigation}) => {
   const screenWidth = Dimensions.get('window').width;
 
   const pieData = [
@@ -41,13 +42,12 @@ const App = () => {
     <View style={styles.container}>
       {/* Top Header */}
       <View style={styles.header}>
-        <TouchableOpacity>
-          <Text style={styles.menuIcon}>☰</Text>
+      <TouchableOpacity onPress={() => navigation.navigate('MenuScreen')}>
+          <Ionicons name="menu" size={24} color="#fff" />
         </TouchableOpacity>
         <Text style={styles.headerText}>Welcome</Text>
       </View>
 
-      {/* Balance Section */}
       <View style={styles.balanceSection}>
         <Text style={styles.balanceTitle}>Available Balance</Text>
         <Text style={styles.balanceAmount}>₹1,05,284</Text>
@@ -88,16 +88,16 @@ const App = () => {
 
       {/* Bottom Navigation */}
       <View style={styles.bottomNav}>
-        <TouchableOpacity>
+        <TouchableOpacity onPress={()=>navigation.navigate('HomeScreen')}>
           <Text style={styles.navIcon}>🏠</Text>
         </TouchableOpacity>
-        <TouchableOpacity>
+        <TouchableOpacity onPress={()=>navigation.navigate('CardScreen')}>
           <Text style={styles.navIcon}>💳</Text>
         </TouchableOpacity>
-        <TouchableOpacity>
+        <TouchableOpacity onPress={()=>navigation.navigate('AnalysisScreen')}>
           <Text style={styles.navIcon}>📊</Text>
         </TouchableOpacity>
-        <TouchableOpacity>
+        <TouchableOpacity onPress={()=>navigation.navigate('ProfileScreen')}>
           <Text style={styles.navIcon}>👤</Text>
         </TouchableOpacity>
       </View>
@@ -111,9 +111,12 @@ const styles = StyleSheet.create({
     backgroundColor: '#1e1e2f',
   },
   header: {
+    paddingTop:40,
+    // padding:20,
+    paddingHorizontal:20,
     flexDirection: 'row',
-    alignItems: 'center',
-    justifyContent: 'center',
+    alignItems: 'center', 
+    justifyContent: 'space-between',
     paddingVertical: 20,
     backgroundColor: '#29293d',
     position:'relative',
@@ -124,10 +127,17 @@ const styles = StyleSheet.create({
     position:'absolute',
   },
   headerText: {
+    paddingTop:30,
+    position:'absolute',
+    // top:'50%',
+    left: 0,
+    right: 0,
+    transform:[{translateY: -10}],
     fontSize: 20,
     fontWeight: 'bold',
     color: '#fff',
     textAlign:'center',
+    marginLeft:10,
   },
   balanceSection: {
     alignItems: 'center',
@@ -214,4 +224,4 @@ const styles = StyleSheet.create({
   },
 });
 
-export default App;
+export default HomeScreen;
