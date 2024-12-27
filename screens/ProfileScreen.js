@@ -8,7 +8,7 @@ const ProfileScreen = () => {
       {/* Profile Picture with Camera Icon */}
       <View style={styles.profileContainer}>
         <Image
-          source={{ uri: 'https://via.placeholder.com/150' }} // Replace with actual profile picture URL
+          source={{ uri: 'https://plus.unsplash.com/premium_photo-1690407617542-2f210cf20d7e?q=80&w=1887&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D' }}
           style={styles.profilePicture}
         />
         <TouchableOpacity style={styles.cameraIconContainer}>
@@ -38,6 +38,7 @@ const styles = StyleSheet.create({
     backgroundColor: '#1e1e2f',
   },
   profileContainer: {
+    
     position: 'relative',
     marginBottom: 20,
   },
@@ -46,7 +47,7 @@ const styles = StyleSheet.create({
     height: 100,
     borderRadius: 50,
     borderWidth: 2,
-    borderColor: '#ddd',
+    borderColor: 'grey',
   },
   cameraIconContainer: {
     position: 'absolute',
@@ -66,11 +67,17 @@ const styles = StyleSheet.create({
     alignItems: 'center',
   },
   infoText: {
+    padding: 5,
+    borderWidth: 1,
+    borderRadius: 5,
+    borderColor: 'white',
+    backgroundColor: '#29293d',
     fontSize: 18,
-    color: '#333',
-    marginBottom: 5,
+    color: 'white',
+    marginBottom: 10,
   },
   logoutButton: {
+    
     backgroundColor: '#ff4d4d',
     paddingVertical: 10,
     paddingHorizontal: 20,

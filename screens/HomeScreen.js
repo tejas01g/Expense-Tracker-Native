@@ -9,17 +9,19 @@ import {
   Dimensions,
 } from 'react-native';
 import { PieChart } from 'react-native-chart-kit';
-import { Ionicons } from '@expo/vector-icons';
 
-const HomeScreen = ({navigation}) => {
+// Home Screen Component
+const HomeScreen = () => {
   const screenWidth = Dimensions.get('window').width;
 
+  // Data for Pie Chart
   const pieData = [
     { name: 'Category 1', population: 13, color: '#8e44ad', legendFontColor: '#fff', legendFontSize: 12 },
     { name: 'Category 2', population: 61, color: '#3498db', legendFontColor: '#fff', legendFontSize: 12 },
     { name: 'Category 3', population: 26, color: '#e67e22', legendFontColor: '#fff', legendFontSize: 12 },
   ];
 
+  // Sample Transactions Data
   const transactions = [
     { id: '1', icon: 'https://cdn-icons-png.flaticon.com/512/888/888857.png', name: 'Shell', date: 'Sep 02, 2022', amount: '-₹45' },
     { id: '2', icon: 'https://cdn-icons-png.flaticon.com/512/888/888857.png', name: 'SM Supermart', date: 'Sep 01, 2022', amount: '-₹235' },
@@ -27,6 +29,7 @@ const HomeScreen = ({navigation}) => {
     { id: '4', icon: 'https://cdn-icons-png.flaticon.com/512/888/888857.png', name: 'AMAZON', date: 'Aug 31, 2022', amount: '-₹75' },
   ];
 
+  // Render a Single Transaction Item
   const renderTransaction = ({ item }) => (
     <View style={styles.transactionItem}>
       <Image source={{ uri: item.icon }} style={styles.transactionIcon} />
@@ -42,12 +45,10 @@ const HomeScreen = ({navigation}) => {
     <View style={styles.container}>
       {/* Top Header */}
       <View style={styles.header}>
-      <TouchableOpacity onPress={() => navigation.navigate('MenuScreen')}>
-          <Ionicons name="menu" size={24} color="#fff" />
-        </TouchableOpacity>
-        <Text style={styles.headerText}>Welcome</Text>
+        <Text style={styles.headerText}>WELCOME</Text>
       </View>
 
+      {/* Balance Section */}
       <View style={styles.balanceSection}>
         <Text style={styles.balanceTitle}>Available Balance</Text>
         <Text style={styles.balanceAmount}>₹1,05,284</Text>
@@ -80,27 +81,6 @@ const HomeScreen = ({navigation}) => {
         keyExtractor={(item) => item.id}
         contentContainerStyle={styles.transactionList}
       />
-
-      {/* Floating Action Button */}
-      <TouchableOpacity style={styles.fab}>
-        <Text style={styles.fabText}>+</Text>
-      </TouchableOpacity>
-
-      {/* Bottom Navigation */}
-      <View style={styles.bottomNav}>
-        <TouchableOpacity onPress={()=>navigation.navigate('HomeScreen')}>
-          <Text style={styles.navIcon}>🏠</Text>
-        </TouchableOpacity>
-        <TouchableOpacity onPress={()=>navigation.navigate('CardScreen')}>
-          <Text style={styles.navIcon}>💳</Text>
-        </TouchableOpacity>
-        <TouchableOpacity onPress={()=>navigation.navigate('AnalysisScreen')}>
-          <Text style={styles.navIcon}>📊</Text>
-        </TouchableOpacity>
-        <TouchableOpacity onPress={()=>navigation.navigate('ProfileScreen')}>
-          <Text style={styles.navIcon}>👤</Text>
-        </TouchableOpacity>
-      </View>
     </View>
   );
 };
@@ -111,33 +91,21 @@ const styles = StyleSheet.create({
     backgroundColor: '#1e1e2f',
   },
   header: {
-    paddingTop:40,
-    // padding:20,
-    paddingHorizontal:20,
+    paddingHorizontal: 20,
     flexDirection: 'row',
-    alignItems: 'center', 
-    justifyContent: 'space-between',
+    alignItems: 'center',
+    justifyContent: 'center',
     paddingVertical: 20,
-    backgroundColor: '#29293d',
-    position:'relative',
-  },
-  menuIcon: {
-    fontSize: 24,
-    color: '#fff',
-    position:'absolute',
+    backgroundColor: '#29293dd',
+    marginTop: 10,
   },
   headerText: {
-    paddingTop:30,
-    position:'absolute',
-    // top:'50%',
-    left: 0,
-    right: 0,
-    transform:[{translateY: -10}],
+    alignItems: 'center',
+    justifyContent: 'center',
     fontSize: 20,
     fontWeight: 'bold',
     color: '#fff',
-    textAlign:'center',
-    marginLeft:10,
+    // marginTop: 10,
   },
   balanceSection: {
     alignItems: 'center',
@@ -189,37 +157,6 @@ const styles = StyleSheet.create({
   transactionAmount: {
     marginLeft: 'auto',
     fontSize: 16,
-    color: '#fff',
-  },
-  fab: {
-    position: 'absolute',
-    bottom: 80,
-    right: 20,
-    backgroundColor: '#e67e22',
-    width: 60,
-    height: 60,
-    borderRadius: 30,
-    justifyContent: 'center',
-    alignItems: 'center',
-  },
-  fabText: {
-    fontSize: 24,
-    color: '#fff',
-    fontWeight: 'bold',
-  },
-  bottomNav: {
-    position: 'absolute',
-    bottom: 0,
-    left: 0,
-    right: 0,
-    height: 60,
-    backgroundColor: '#29293d',
-    flexDirection: 'row',
-    justifyContent: 'space-around',
-    alignItems: 'center',
-  },
-  navIcon: {
-    fontSize: 24,
     color: '#fff',
   },
 });
